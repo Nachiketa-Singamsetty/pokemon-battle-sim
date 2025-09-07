@@ -22,10 +22,23 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Enhanced Pokemon-themed CSS
+# Enhanced Pokemon-themed CSS for production deployment
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800&display=swap');
+    /* Force CSS override for Streamlit production */
+    .stApp > div:first-child {
+        background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 25%, #45b7d1 50%, #f9ca24 75%, #f0932b 100%) !important;
+        background-size: 400% 400% !important;
+        animation: gradientShift 8s ease infinite !important;
+    }
+    
+    .main .block-container {
+        background: rgba(255,255,255,0.1) !important;
+        backdrop-filter: blur(10px) !important;
+        border-radius: 20px !important;
+        padding: 2rem !important;
+        margin-top: 1rem !important;
+    }
     
     .main {
         background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 25%, #45b7d1 50%, #f9ca24 75%, #f0932b 100%);
@@ -42,15 +55,15 @@ st.markdown("""
     
     .main-header {
         text-align: center;
-        font-family: 'Press Start 2P', cursive;
+        font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
         font-size: 2rem;
-        color: #fff;
+        font-weight: bold;
+        color: #fff !important;
         text-shadow: 3px 3px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
         margin: 2rem 0;
         padding: 1rem;
-        background: rgba(0,0,0,0.3);
+        background: rgba(0,0,0,0.5) !important;
         border-radius: 20px;
-        backdrop-filter: blur(10px);
         animation: bounce 2s infinite;
     }
     
@@ -146,23 +159,25 @@ st.markdown("""
     }
     
     .pokemon-name {
-        font-family: 'Press Start 2P', cursive;
+        font-family: 'Courier New', 'Monaco', monospace;
         font-size: 1.2rem;
+        font-weight: bold;
         text-align: center;
         margin: 1rem 0;
-        color: #2c3e50;
+        color: #2c3e50 !important;
         text-shadow: 2px 2px 0px #fff;
     }
     
     .vs-container {
         text-align: center;
-        font-family: 'Press Start 2P', cursive;
+        font-family: 'Courier New', 'Monaco', monospace;
         font-size: 1.8rem;
-        color: #e74c3c;
+        font-weight: bold;
+        color: #e74c3c !important;
         text-shadow: 2px 2px 0px #fff;
         margin: 2rem 0;
         animation: pulse 2s infinite;
-        background: rgba(255,255,255,0.9);
+        background: rgba(255,255,255,0.9) !important;
         padding: 1rem;
         border-radius: 15px;
         border: 3px solid #333;
@@ -173,35 +188,35 @@ st.markdown("""
         padding: 0.4rem 1rem;
         margin: 0.2rem;
         border-radius: 25px;
-        font-family: 'Nunito', sans-serif;
-        font-weight: 700;
+        font-family: 'Arial', 'Helvetica', sans-serif;
+        font-weight: bold;
         font-size: 0.8rem;
         text-transform: uppercase;
-        color: white;
+        color: white !important;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         border: 2px solid #fff;
         box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
     
-    /* Pokemon type colors */
-    .type-normal { background: linear-gradient(45deg, #A8A878, #BCBC7A); }
-    .type-fire { background: linear-gradient(45deg, #F08030, #F5AC78); }
-    .type-water { background: linear-gradient(45deg, #6890F0, #9DB7F5); }
-    .type-electric { background: linear-gradient(45deg, #F8D030, #FAE078); color: #333; }
-    .type-grass { background: linear-gradient(45deg, #78C850, #A7DB8D); }
-    .type-ice { background: linear-gradient(45deg, #98D8D8, #BCE6E6); color: #333; }
-    .type-fighting { background: linear-gradient(45deg, #C03028, #D67873); }
-    .type-poison { background: linear-gradient(45deg, #A040A0, #C183C1); }
-    .type-ground { background: linear-gradient(45deg, #E0C068, #EBD69D); color: #333; }
-    .type-flying { background: linear-gradient(45deg, #A890F0, #C6B7F5); }
-    .type-psychic { background: linear-gradient(45deg, #F85888, #FA92B2); }
-    .type-bug { background: linear-gradient(45deg, #A8B820, #C6D16E); }
-    .type-rock { background: linear-gradient(45deg, #B8A038, #D1C17D); }
-    .type-ghost { background: linear-gradient(45deg, #705898, #A292BC); }
-    .type-dragon { background: linear-gradient(45deg, #7038F8, #A27DFA); }
-    .type-dark { background: linear-gradient(45deg, #705848, #A29288); }
-    .type-steel { background: linear-gradient(45deg, #B8B8D0, #D1D1E0); color: #333; }
-    .type-fairy { background: linear-gradient(45deg, #EE99AC, #F4BDC9); color: #333; }
+    /* Pokemon type colors with !important for production */
+    .type-normal { background: linear-gradient(45deg, #A8A878, #BCBC7A) !important; }
+    .type-fire { background: linear-gradient(45deg, #F08030, #F5AC78) !important; }
+    .type-water { background: linear-gradient(45deg, #6890F0, #9DB7F5) !important; }
+    .type-electric { background: linear-gradient(45deg, #F8D030, #FAE078) !important; color: #333 !important; }
+    .type-grass { background: linear-gradient(45deg, #78C850, #A7DB8D) !important; }
+    .type-ice { background: linear-gradient(45deg, #98D8D8, #BCE6E6) !important; color: #333 !important; }
+    .type-fighting { background: linear-gradient(45deg, #C03028, #D67873) !important; }
+    .type-poison { background: linear-gradient(45deg, #A040A0, #C183C1) !important; }
+    .type-ground { background: linear-gradient(45deg, #E0C068, #EBD69D) !important; color: #333 !important; }
+    .type-flying { background: linear-gradient(45deg, #A890F0, #C6B7F5) !important; }
+    .type-psychic { background: linear-gradient(45deg, #F85888, #FA92B2) !important; }
+    .type-bug { background: linear-gradient(45deg, #A8B820, #C6D16E) !important; }
+    .type-rock { background: linear-gradient(45deg, #B8A038, #D1C17D) !important; }
+    .type-ghost { background: linear-gradient(45deg, #705898, #A292BC) !important; }
+    .type-dragon { background: linear-gradient(45deg, #7038F8, #A27DFA) !important; }
+    .type-dark { background: linear-gradient(45deg, #705848, #A29288) !important; }
+    .type-steel { background: linear-gradient(45deg, #B8B8D0, #D1D1E0) !important; color: #333 !important; }
+    .type-fairy { background: linear-gradient(45deg, #EE99AC, #F4BDC9) !important; color: #333 !important; }
     
     .stat-bar-container {
         background: rgba(255,255,255,0.9);
@@ -228,32 +243,32 @@ st.markdown("""
         align-items: center;
         justify-content: center;
         color: white;
-        font-family: 'Nunito', sans-serif;
+        font-family: 'Arial', 'Helvetica', sans-serif;
         font-weight: bold;
         font-size: 0.8rem;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
         transition: width 1s ease-in-out;
     }
     
-    .hp-bar { background: linear-gradient(90deg, #e74c3c, #c0392b); }
-    .attack-bar { background: linear-gradient(90deg, #e67e22, #d35400); }
-    .defense-bar { background: linear-gradient(90deg, #3498db, #2980b9); }
-    .sp-attack-bar { background: linear-gradient(90deg, #9b59b6, #8e44ad); }
-    .sp-defense-bar { background: linear-gradient(90deg, #1abc9c, #16a085); }
-    .speed-bar { background: linear-gradient(90deg, #f39c12, #e67e22); }
+    .hp-bar { background: linear-gradient(90deg, #e74c3c, #c0392b) !important; }
+    .attack-bar { background: linear-gradient(90deg, #e67e22, #d35400) !important; }
+    .defense-bar { background: linear-gradient(90deg, #3498db, #2980b9) !important; }
+    .sp-attack-bar { background: linear-gradient(90deg, #9b59b6, #8e44ad) !important; }
+    .sp-defense-bar { background: linear-gradient(90deg, #1abc9c, #16a085) !important; }
+    .speed-bar { background: linear-gradient(90deg, #f39c12, #e67e22) !important; }
     
     .stButton > button {
-        background: linear-gradient(45deg, #e74c3c, #c0392b);
-        color: white;
-        border: 3px solid #fff;
-        border-radius: 25px;
-        padding: 0.75rem 2rem;
-        font-family: 'Nunito', sans-serif;
-        font-weight: bold;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
-        text-transform: uppercase;
+        background: linear-gradient(45deg, #e74c3c, #c0392b) !important;
+        color: white !important;
+        border: 3px solid #fff !important;
+        border-radius: 25px !important;
+        padding: 0.75rem 2rem !important;
+        font-family: 'Arial', 'Helvetica', sans-serif !important;
+        font-weight: bold !important;
+        font-size: 1rem !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4) !important;
+        text-transform: uppercase !important;
     }
     
     .stButton > button:hover {
@@ -275,7 +290,7 @@ st.markdown("""
         margin: 0.5rem 0;
         border-radius: 10px;
         border-left: 4px solid #3498db;
-        font-family: 'Nunito', sans-serif;
+        font-family: 'Arial', 'Helvetica', sans-serif;
     }
     
     .damage-text { color: #e74c3c; font-weight: bold; animation: shake 0.5s; }
@@ -304,13 +319,14 @@ st.markdown("""
     }
     
     .tab-header {
-        font-family: 'Press Start 2P', cursive;
+        font-family: 'Courier New', 'Monaco', monospace;
         font-size: 1.2rem;
-        color: #2c3e50;
+        font-weight: bold;
+        color: #2c3e50 !important;
         text-align: center;
         margin: 1rem 0;
         padding: 1rem;
-        background: rgba(255,255,255,0.9);
+        background: rgba(255,255,255,0.9) !important;
         border-radius: 15px;
         border: 3px solid #333;
     }
