@@ -1,41 +1,77 @@
-# Pokémon Battle Simulation MCP Server
+# 🎮 Pokémon Battle Simulator
 
-A production-ready Model Context Protocol (MCP) server for Pokémon data retrieval and battle simulation using Python 3.10+ and the free PokéAPI service.
+## 🌐 Live Demo
+**Try it now:** [https://pokemon-battle-sim-65mc.onrender.com](https://pokemon-battle-sim-65mc.onrender.com)
 
-## Features
+*Note: The app might take a minute to load as it's hosted on Render's free tier.*
 
-- **MCP-compliant server** with FastAPI implementation
-- **Pokémon data resources** from PokéAPI (stats, types, abilities, moves, evolution chains)
-- **Battle simulation tool** with realistic mechanics including:
-  - Accurate damage formula based on official Pokémon games
-  - Complete type effectiveness system (18 types)
-  - Status effects (Paralysis, Burn, Poison)
-  - Critical hits and STAB (Same Type Attack Bonus)
-  - Turn-based combat with speed-based turn order
-- **Comprehensive testing** with pytest
+---
+
+An interactive Pokémon battle simulation application with both a beautiful Streamlit web interface and a Model Context Protocol (MCP) server backend. Battle any Pokémon with realistic game mechanics!
+
+![Pokemon Battle Simulator Home](screenshots/home.png)
+
+## ✨ Features
+
+### 🎨 **Beautiful Streamlit Web Interface**
+- **Pokemon-themed UI** with retro fonts and animations
+- **Dual selection modes**: Custom search or popular picks dropdown
+- **Real-time battle simulation** with formatted logs
+- **Type badges** with authentic Pokemon colors
+- **Animated stat bars** for each Pokemon attribute
+- **Battle history** tracking and management
+
+![Pokemon Statistics View](screenshots/pokemon_stats.png)
+
+### ⚔️ **Advanced Battle System**
+- **Realistic damage formula** based on official Pokemon games
+- **Complete type effectiveness** system (18 types)
+- **Status effects**: Paralysis, Burn, Poison
+- **Critical hits** and STAB (Same Type Attack Bonus)
+- **Turn-based combat** with speed-based turn order
+
+### 🔧 **Technical Features**
+- **MCP-compliant server** with FastAPI backend
+- **Pokemon data** from PokéAPI integration
 - **Caching system** for improved performance
-- **Production-ready** with proper error handling and logging
+- **Production-ready** error handling
 
-## Project Structure
+## 🚀 Quick Start
+
+### Option 1: Streamlit Web Interface (Recommended)
+```bash
+# Clone the repository
+git clone https://github.com/Nachiketa-Singamsetty/pokemon-battle-sim.git
+cd pokemon-battle-sim
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the web interface
+streamlit run streamlit_app.py
+```
+
+### Option 2: MCP Server API
+```bash
+# Start the MCP server
+uvicorn server:app --reload --port 8000
+```
+
+## 📁 Project Structure
 
 ```
-pokemon/
-├── server.py                 # Main FastAPI MCP server
+pokemon-battle-sim/
+├── streamlit_app.py          # Main Streamlit web interface
+├── server.py                 # FastAPI MCP server
 ├── requirements.txt          # Python dependencies
-├── README.md                # This file
-├── resources/               # MCP resources implementation
+├── README.md                # Documentation
+├── resources/               # Pokemon data fetching
 │   ├── __init__.py
-│   └── pokemon_resource.py  # PokéAPI data fetching
-├── tools/                   # MCP tools implementation
-│   ├── __init__.py
-│   ├── pokemon_battle.py    # Core battle system
-│   └── battle_tool.py       # MCP battle tool
-└── tests/                   # Comprehensive test suite
+│   └── pokemon_resource.py  # PokéAPI integration
+└── tools/                   # Battle system
     ├── __init__.py
-    ├── test_pokemon_resource.py
-    ├── test_battle_system.py
-    ├── test_battle_tool.py
-    └── test_server.py
+    ├── pokemon_battle.py    # Core battle mechanics
+    └── battle_tool.py       # MCP battle tool
 ```
 
 ## Installation & Setup
@@ -396,6 +432,8 @@ The web interface will be available at `http://localhost:8501` and includes:
 - **Pokémon Data Visualization**: Stats displayed with interactive charts and progress bars
 - **Battle Management**: History tracking and result downloading
 - **Mobile Friendly**: Responsive design works on all devices
+
+![Battle History](screenshots/battle_history.png)
 
 ### Usage
 
